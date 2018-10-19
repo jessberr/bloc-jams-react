@@ -12,7 +12,9 @@ class Album extends Component {
     this.state = {
       album: album
     };
+    console.log(this.props.match.params.slug);
   }
+
 
   render() {
     return (
@@ -25,6 +27,15 @@ class Album extends Component {
             <div id="release-info">{this.state.album.releaseInfo}</div>
           </div>
         </section>
+        <table id="song-list">
+           <colgroup>
+             <col id="song-number-column" />
+             <col id="song-title-column" />
+             <col id="song-duration-column" />
+           </colgroup>
+           <tbody>
+           </tbody>
+         </table>
       </section>
     );
   }
