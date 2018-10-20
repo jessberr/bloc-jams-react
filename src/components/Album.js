@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import albumData from './../data/album';
 
 class Album extends Component {
@@ -36,11 +37,11 @@ class Album extends Component {
            <tbody>
              <section className="songs">
             {
-              this.state.albums.songs.map((song, index) =>
+              this.state.album.songs.map((song, index) =>
               <tr className="song" key={index}>
-                <td {index}</td>
-                <td {this.state.song.title}</td>
-                <td {this.state.song.duration}</td>
+                <td> {index +1}</td>
+                <td> {song.title}</td>
+                <td> {song.duration}</td>
               </tr>
             )
             }
