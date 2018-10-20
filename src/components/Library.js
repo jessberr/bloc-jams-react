@@ -20,6 +20,7 @@ class Library extends Component {
             <div>{album.songs.length} songs</div>
           </Link>
       )
+         
     }
       </section>
     );

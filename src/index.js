@@ -12,8 +12,3 @@ ReactDOM.render(
   , document.getElementById('root'));
 
 serviceWorker.register();
-
-
-/*Failed to compile
-./src/index.js
-Attempted import error: './serviceWorker' does not contain a default export (imported as 'serviceWorker').*/
