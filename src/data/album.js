@@ -12,7 +12,7 @@ export default [{
       { title: 'Magenta', duration: '374.22', audioSrc: '/assets/music/magenta.mp3' }
   ]
 }, {
-    title: 'The Radio',
+    title: 'The Telephone',
     artist: 'Guglielmo Marconi',
     releaseInfo: '1909 EM',
     albumCover: '/assets/images/album_covers/02.jpg',

@@ -10,7 +10,6 @@ class Album extends Component {
       return album.slug === this.props.match.params.slug
     });
 
-
     this.state = {
       album: album,
       currentSong: album.songs[0],
@@ -20,6 +19,7 @@ class Album extends Component {
     this.audioElement = document.createElement('audio');
     this.audioElement.src = album.songs[0].audioSrc;
   }
+
 
   play() {
     this.audioElement.play();
@@ -46,6 +46,19 @@ class Album extends Component {
     }
   }
 
+  getInitialState() {
+    return {
+      isMouseInside: false
+    };
+  }
+  mouseEnter = () => {
+    this.setState({ isMouseInside: true });
+  }
+  mouseLeave = () => {
+    this.setState({ isMouseInside: false });
+  }
+
+
   render() {
     return (
 
@@ -61,6 +74,7 @@ class Album extends Component {
 
         <table id="song-list">
 
+
            <colgroup>
              <col id="song-number-column" />
              <col id="song-title-column" />
@@ -72,8 +86,10 @@ class Album extends Component {
             {
               this.state.album.songs.map((song, index) =>
               <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-                <td> {index +1}</td>
-                <td> {song.title}</td>
+                <span className="icon ion-md-play"></span>
+                <span className="icon ion-md-pause"></span>
+                <td> {index +1}  </td>
+                <td > {song.title}</td>
                 <td> {song.duration}</td>
               </tr>
             )
