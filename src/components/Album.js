@@ -13,7 +13,8 @@ class Album extends Component {
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      isPlaying: false
+      isPlaying: false,
+      isHovered: true
     };
 
     this.audioElement = document.createElement('audio');
@@ -46,22 +47,10 @@ class Album extends Component {
     }
   }
 
-  getInitialState() {
-    return {
-      isMouseInside: false
-    };
-  }
-  mouseEnter = () => {
-    this.setState({ isMouseInside: true });
-  }
-  mouseLeave = () => {
-    this.setState({ isMouseInside: false });
-  }
 
 
   render() {
     return (
-
       <section className="album">
         <section id="album-info">
            <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
@@ -73,8 +62,6 @@ class Album extends Component {
         </section>
 
         <table id="song-list">
-
-
            <colgroup>
              <col id="song-number-column" />
              <col id="song-title-column" />
@@ -82,21 +69,36 @@ class Album extends Component {
            </colgroup>
 
            <tbody>
-             <section className="songs">
-            {
-              this.state.album.songs.map((song, index) =>
-              <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-                <span className="icon ion-md-play"></span>
-                <span className="icon ion-md-pause"></span>
-                <td> {index +1}  </td>
-                <td > {song.title}</td>
-                <td> {song.duration}</td>
-              </tr>
-            )
-            }
-            </section>
+             {this.state.album.songs.map((song, index) => (
+               <tr
+                 className="song"
+                 key={index}
+                 onClick={() => this.handleSongClick (song)}
+                 onMouseEnter={() => this.setState({ isHovered: index + 1 })}
+                 onMouseLeave={() => this.setState({ isHovered: false })}
+               >
+                 <td className="song-actions">
+                   {this.state.isPlaying ? (
+                     <span>
+                       {this.state.currentSong.title === song.title ? (
+                         <span className="icon ion-md-pause"/>
+                       ) : (
+                         <span>{index +1}</span>
+                       )}
+                     </span>
+                   ) : this.state.isHovered === index + 1 ? (
+                     <span className="icon ion-md-play"/>
+                   ) : (
+                     <span className="song-number">{index + 1}</span>
+                   )}
+                 </td>
+                 <td className="song-title">{song.title}</td>
+                 <td className="song-duration">
+                   {song.duration}
+                 </td>
+                </tr>
+             ) ) }
            </tbody>
-
        </table>
       </section>
     );
