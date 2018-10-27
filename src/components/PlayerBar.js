@@ -9,6 +9,7 @@ class PlayerBar extends Component {
           <button id="previous" onClick={this.props.handlePrevClick}>
             <span className="icon ion-md-rewind"></span>
           </button>
+
           <button id="play-pause" onClick={this.props.handleSongClick} >
              <span className={this.props.isPlaying ? 'icon ion-md-pause' : 'icon ion-md-play'}> </span>
           </button>
@@ -16,12 +17,8 @@ class PlayerBar extends Component {
             <span className="icon ion-md-fastforward"></span>
           </button>
         </section>
-        <section id="time-control">
-          <div className="current-time">–:––</div>
-          <input type="range" className="seek-bar" value="0" />
-          <div className="total-time">–:––</div>
-        </section>
-        <section id="volume-control">
+
+      <section id="time-control">
           <div className="current-time">{this.props.currentTime}</div>
           <input
             type="range"
@@ -35,6 +32,21 @@ class PlayerBar extends Component {
           <div className="total-time">{this.props.duration}</div>
         </section>
 
+        <section id="volume-control">
+
+          <div className="current-volume">{this.props.currentVolume}</div>
+            <div className="icon ion-md-volume-high">
+              <input
+                type="range"
+                className="seek-bar"
+                value={(this.props.currentVolume / this.props.newVolume) || 0}
+                max="20"
+                min="0"
+                step="1"
+                onChange={this.props.handleVolumeChange}
+              />
+            </div>
+        </section>
       </section>
 
 
