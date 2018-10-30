@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import albumData from './../data/album';
+import './Library.css';
 
 class Library extends Component {
   constructor(props){
@@ -20,7 +21,7 @@ class Library extends Component {
             <div>{album.songs.length} songs</div>
           </Link>
       )
-         
+
     }
       </section>
     );
