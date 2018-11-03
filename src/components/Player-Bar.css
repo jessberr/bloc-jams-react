@@ -1,3 +1,20 @@
 .player-bar {
-  
+    background-color: white;
+    border: solid orange;
+    color: Black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#next, #previous, #play-pause {
+  background-color: white;
+   border: solid orange;
+   color: black;
+   text-align: center;
+   font-size: 16px;
 }

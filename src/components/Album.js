@@ -152,7 +152,7 @@ class Album extends Component {
     } = this.state;
 
     return (
-      <section className = "album" >
+      <section className = "album">
 
       <section id = "album-info" >
 
